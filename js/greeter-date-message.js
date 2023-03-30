@@ -2,39 +2,56 @@ class GreeterDateMessage {
 
 	constructor() {
 		this._greeterMessage = document.querySelector('#greeterMessage');	
-		this._dateMessage = document.querySelector('#dateMessage');	
-
+		this._dateMessage = document.querySelector('#dateMessage');
+		
 		this._monthsArr = [
-			'January',
-			'February',
-			'March',
-			'April',
-			'May',
-			'June',
-			'July',
-			'August',
-			'September',
-			'October',
-			'November',
-			'December'
+		    'Ocak\'ın',
+		    'Şubat\'ın',
+		    'Mart\'ın',
+		    'Nisan\'ın',
+		    'Mayıs\'ın',
+		    'Haziran\'ın',
+		    'Temmuz\'un',
+		    'Ağustos\'un',
+		    'Eylül\'ün',
+		    'Ekim\'in',
+		    'Kasım\'ın',
+		    'Aralık\'ın'
 		];
 
 		this._daysArr = [
-			'Sunday',
-			'Monday',
-			'Tuesday',
-			'Wednesday',
-			'Thursday',
-			'Friday',
-			'Saturday'
+			'Pazar',
+			'Pazartesi',
+			'Salı',
+			'Çarşamba',
+			'Perşembe',
+			'Cuma',
+			'Cumartesi'
 		];
 
 		this._updateGreeterDateMessage();
 	}
 
-	_getDayOrdinal = (day) => {
-		return day + (day > 0 ? ['th', 'st', 'nd', 'rd'][(day > 3 && day < 21) ||
-			day % 10 > 3 ? 0 : day % 10] : '');
+	function _getDayOrdinal(num) { 
+	  if (num.toString().length < 2) {
+	    var first_digit = null;
+	    var last_digit = num;
+	  } else {
+	    var first_digit = parseInt(num.toString()[0]);
+	    var last_digit = parseInt(num.toString()[1]);
+	  }
+
+	  var last_words = ["", "biri", "ikisi", "üçü", "dördü", "beşi", "altısı", "yedisi", "sekizi", "dokuzu"];
+
+	  if (first_digit == 1) {
+	    return "on " + last_words[last_digit];
+	  } else if (first_digit == 2) {
+	    return "yirmi " + last_words[last_digit];
+	  } else if (first_digit == 3) {
+	    return "otuz " + last_words[last_digit];
+	  } else if (first_digit == null) {
+	    return last_words[last_digit];
+	  }
 	}
 
 	_updateGreeterDateMessage = () => {
@@ -44,18 +61,18 @@ class GreeterDateMessage {
 		let greeterSuffix = '';
 
 		if (hour >= 6 && hour < 12) {
-			greeterSuffix = 'Morning';
+			greeterSuffix = 'Sabahlar';
 
 		} else if (hour >= 12 && hour < 18) {
-			greeterSuffix = 'Afternoon';
+			greeterSuffix = 'Öğlenler';
 
 		} else {
-			greeterSuffix = 'Evening';
+			greeterSuffix = 'Akşamlar';
 		}
 
-		this._greeterMessage.innerText = `Good\n${greeterSuffix}!`;
-		this._dateMessage.innerText = `Today's the ${this._getDayOrdinal(date.getDate())} of ` +
-									`${this._monthsArr[date.getMonth()]}, and it's ${this._daysArr[date.getDay()]}.`;
+		this._greeterMessage.innerText = `İyi\n${greeterSuffix}!`;
+		this._dateMessage.innerText = `Bugün ${this._monthsArr[date.getMonth()]} ` +
+									`${this._getDayOrdinal(date.getDate())}, | ${this._daysArr[date.getDay()]}.`;
 	}
 
 }
