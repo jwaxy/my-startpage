@@ -84,7 +84,7 @@ class GreeterDateMessage {
 
 		this._greeterMessage.innerText = `İyi\n${greeterSuffix}!`;
 		this._dateMessage.innerText = `Bugün ${this._monthsArr[date.getMonth()]} ` +
-									`${this._getDayOrdinal(date.getDate())}, | ${this._daysArr[date.getDay()]}.`;
+									`${this._getDayOrdinal(date.getDate())} | ${this._daysArr[date.getDay()]}.`;
 	}
 
 }
