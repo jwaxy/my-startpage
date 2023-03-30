@@ -25,13 +25,13 @@ class Clock {
 		let midDay = 'AM';
 		
 		// Assigning
-		midDay = (hour >= 12) ? 'PM' : 'AM';
-		hour = (hour === 0) ? 12 : ((hour > 12) ? (hour - 12) : hour);
+		// midDay = (hour >= 12) ? 'PM' : 'AM';
+		// hour = (hour === 0) ? 12 : ((hour > 12) ? (hour - 12) : hour);
 		hour = this._appendZero(hour);
 		min = this._appendZero(min);
 
 		// Update clock id element
-		this._clockEl.innerText = `${hour}:${min} ${midDay}` ;
+		this._clockEl.innerText = `${hour}:${min}` ;
 	}
 
 	_startClock = () => {
