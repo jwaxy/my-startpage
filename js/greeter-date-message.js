@@ -32,7 +32,7 @@ class GreeterDateMessage {
 		this._updateGreeterDateMessage();
 	}
 
-	function _getDayOrdinal(num) { 
+	_getDayOrdinal = (num) => { 
 	  if (num.toString().length < 2) {
 	    var first_digit = null;
 	    var last_digit = num;
