@@ -44,11 +44,23 @@ class GreeterDateMessage {
 	  var last_words = ["", "biri", "ikisi", "üçü", "dördü", "beşi", "altısı", "yedisi", "sekizi", "dokuzu"];
 
 	  if (first_digit == 1) {
-	    return "on " + last_words[last_digit];
+	    if (last_digit == 0) {
+	      return "onu";
+	    } else {
+	      return "on " + last_words[last_digit];
+	    }
 	  } else if (first_digit == 2) {
-	    return "yirmi " + last_words[last_digit];
+	    if (last_digit == 0) {
+	      return "yirmisi";
+	    } else {
+	      return "yirmi " + last_words[last_digit];
+	    }
 	  } else if (first_digit == 3) {
-	    return "otuz " + last_words[last_digit];
+	    if (last_digit == 0) {
+	      return "otuzu";
+	    } else {
+	      return "otuz " + last_words[last_digit];
+	    }
 	  } else if (first_digit == null) {
 	    return last_words[last_digit];
 	  }
